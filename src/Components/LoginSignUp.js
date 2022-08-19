@@ -2,6 +2,7 @@ import React, { useState, useContext} from "react";
 import api from "../API/database";
 import AppContext from "../AppContext";
 import { useNavigate } from "react-router-dom";
+import useSetArrays from "./useSetArrays";
 
 export default function LoginSignUp() {
   const { setCurrentUser, setLoggedIn } = useContext(AppContext);
@@ -13,6 +14,8 @@ export default function LoginSignUp() {
   });
   const [isExistingUser, setExistingUser] = useState(true);
   const [msg, setMsg] = useState("");
+
+  const [setItem, setCart, setWishlist] = useSetArrays();
 
   let navigate = useNavigate();
 
@@ -33,9 +36,9 @@ export default function LoginSignUp() {
             setCurrentUser({ ...response.data.user });
             window.localStorage.setItem("token", response.data.accessToken);
             let user = response.data.user;
-            window.localStorage.setItem("cart", user.cart)
-            window.localStorage.setItem("wishlist", user.wishlist)
-            window.localStorage.setItem("orders", user.orders)
+            //function to set the cart
+            //function to set order list
+            //function to set wishlist
             console.log(response);
             setLoggedIn(true);
             navigate("/");

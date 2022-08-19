@@ -6,7 +6,7 @@ import checkMark from '../assets/check-mark-animate.gif'
 
 
 export default function Cart(){
-    const {cart} = useContext(AppContext);
+    const {cartCount} = useContext(AppContext);
     let navigate = useNavigate();
 
     const [displaySuccessMsg, setDisplaySuccessMsg] = useState(false)
@@ -40,7 +40,7 @@ export default function Cart(){
 
     return(<div>
    {/*  {cart.map(createCard)} */}
-    {cart.length === 0?
+    {cartCount === 0?
             <div className='errDiv'>
                 <i class="customIcon--light fa-solid fa-face-sad-tear fa-3x"></i>
                 <br/>

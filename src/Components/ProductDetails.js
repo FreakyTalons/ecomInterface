@@ -1,14 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppContext from "../AppContext";
-import useAddProduct from "./useAddProduct";
 
 export default function ProductDetails() {
   const { productList, currentProd, isLoggedIn, setCartCount} = useContext(AppContext);
   const [item, setItm] = useState({});
-  const[isFav, setIsFav] = useState(false);
-  const[added, setAdded] = useState(false);
-  const setItem = useAddProduct();
+  const [isFav, setIsFav] = useState(false);
+  const [added, setAdded] = useState(false);
 
   let navigate = useNavigate();
 
@@ -33,7 +31,7 @@ export default function ProductDetails() {
   const handleCartClick = () => {
     if (isLoggedIn) {
       setAdded(true)
-      setItem({type:"cart", title:item.title, amount:item.amount, image:item.image})
+      //add to cart function
       setCartCount(prevValue => prevValue+1)
     } else {
       navigate("/loginSignUp");
@@ -46,7 +44,7 @@ export default function ProductDetails() {
     {
       if (isLoggedIn) {
         setIsFav(true)
-        setItem({type:"wishlist", title:item.title, amount:item.amount, image:item.image})
+        //add to fav function
       } else {
         navigate("/loginSignUp");
       }

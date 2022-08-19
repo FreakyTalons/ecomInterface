@@ -1,14 +1,14 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppContext from "../AppContext";
-import useAddProduct from "./useAddProduct";
+import useAddProduct from "./useSetArrays";
 
 export default function ProductCard(props) {
 
   let navigate = useNavigate();
   const[isFav, setIsFav] = useState(false);
   const { setCurrentProd, isLoggedIn, setCartCount} = useContext(AppContext);
-  const setItem = useAddProduct();
+  const [setItem ] = useAddProduct();
 
   const handleClick = () => {
     setCurrentProd(props.id);
@@ -17,7 +17,7 @@ export default function ProductCard(props) {
 
   const handleCartClick = () => {
     if (isLoggedIn) {
-      setItem({type:"cart", title:props.title, amount:props.amount, image:props.image})
+      //function to add to cart
       setCartCount(prevValue => prevValue+1)
       
     } else {
@@ -30,8 +30,8 @@ export default function ProductCard(props) {
     if(!isFav)
     {
       if (isLoggedIn) {
+        //add to favorite function
         setIsFav(true)
-        setItem({type:"wishlist", title:props.title, amount:props.amount, image:props.image})
       } else {
         navigate("/loginSignUp");
       }

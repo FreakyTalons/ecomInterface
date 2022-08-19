@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useState} from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Cart from "./Components/Cart";
 import ProductList from "./Components/ProductList";
@@ -13,8 +13,7 @@ function App() {
   const [currentProd, setCurrentProd] = useState(0);
   const [currentUser, setCurrentUser] = useState([]);
   const [cartCount, setCartCount] = useState(0);
-  const [cart, setCart] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
+
   //retrieve products list
 
   const handleClick = () => {
@@ -40,8 +39,7 @@ function App() {
           setCurrentProd,
           setCurrentUser,
           currentUser,
-          setCartCount,
-          cart, setCart, wishlist, setWishlist
+          setCartCount, cartCount
         }}
       >
         <BrowserRouter>
