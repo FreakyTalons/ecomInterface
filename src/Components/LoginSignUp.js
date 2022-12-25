@@ -2,7 +2,7 @@ import React, { useState, useContext} from "react";
 import api from "../API/database";
 import AppContext from "../AppContext";
 import { useNavigate } from "react-router-dom";
-import useSetArrays from "./useSetArrays";
+
 
 export default function LoginSignUp() {
   const { setCurrentUser, setLoggedIn } = useContext(AppContext);
@@ -14,8 +14,7 @@ export default function LoginSignUp() {
   });
   const [isExistingUser, setExistingUser] = useState(true);
   const [msg, setMsg] = useState("");
-
-  const [setItem, setCart, setWishlist] = useSetArrays();
+  const [showPswd, setShowPswd] = useState(false);
 
   let navigate = useNavigate();
 
@@ -33,14 +32,11 @@ export default function LoginSignUp() {
         try {
           const response = await api.post("/login", request);
           if (response.status === 200) {
-            setCurrentUser({ ...response.data.user });
-            window.localStorage.setItem("token", response.data.accessToken);
-            let user = response.data.user;
+                        setCurrentUser({ ...response.data.user });
             //function to set the cart
             //function to set order list
             //function to set wishlist
-            console.log(response);
-            setLoggedIn(true);
+                        setLoggedIn(true);
             navigate("/");
           }
         } catch (err) {
@@ -61,8 +57,7 @@ export default function LoginSignUp() {
             const setOrders = async () => {
               const request = { email: tempUser.email, orders: []};
               const response = await api.post("/orders", request);
-              console.log(response);
-            };
+                          };
             setOrders();
             changeExistingUser();
           }
@@ -85,8 +80,13 @@ export default function LoginSignUp() {
     });
   };
 
-  let loginCSS = { margin: "20vh auto 0 auto" };
-  let signupCSS = { margin: "10vh auto 0 auto" };
+  const handleToggleClick = () =>
+  {
+    setShowPswd(prevValue => !prevValue)
+  }
+
+  let loginCSS = { margin: "12vh auto 0 auto" };
+  let signupCSS = { margin: "8vh auto 0 auto" };
 
   return (
     <div className="loginDiv" style={isExistingUser ? loginCSS : signupCSS}>
@@ -119,11 +119,19 @@ export default function LoginSignUp() {
       />
       <input
         onChange={handleChange}
-        type="password"
+        type={showPswd?"text":"password"}
         placeholder="Password"
         value={tempUser.password}
         name="password"
       />
+      <p onClick={handleToggleClick}>
+        {showPswd?
+          <> <i className="customIcon fa-solid fa-eye-slash"></i>
+          <span>Hide Password</span> </> :
+          <>
+          <i className="customIcon fa-solid fa-eye"></i>
+          <span>Show Password</span> </>}
+      </p>
       <p className="sgnMsg" onClick={changeExistingUser}>
         {isExistingUser
           ? "Don't have an account? Sign Up now!"

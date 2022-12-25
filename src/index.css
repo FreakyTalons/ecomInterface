@@ -54,6 +54,7 @@ button:hover, .bt:hover
 .customIcon--pink
 {
   color: #F27BA2;
+  cursor: pointer;
   margin: auto 5px;
 }
 
@@ -127,9 +128,25 @@ button:hover, .bt:hover
   font-family: 'Poppins', sans-serif;
   background-color: #f5f7f8;
 }
+
+.loginDiv span
+{
+  padding: 0 10px;
+  cursor: pointer;
+  color: rgb(118, 118, 118);
+  font-family: 'Poppins', sans-serif;
+  font-size: medium;
+}
+
+.loginDiv span:hover
+{
+  font-weight: bold;
+}
+
 .sgnMsg
 {
   cursor: pointer;
+  font-family: 'Poppins', sans-serif;
 }
 
 .sgnMsg:hover
@@ -248,10 +265,7 @@ button:hover, .bt:hover
 {
   color: red;
   cursor: default;
-}
-
-.err:hover{
-  color: red;
+  font-family: 'Poppins', sans-serif;
 }
 
 

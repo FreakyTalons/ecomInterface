@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "email": "hoo@gmail.com",
-      "password": "$2a$10$gUQftsrdNo8m/dzjxKD8R.7KNMxKuqNIamRy72u6JkaH44oCA4SE.",
-      "fName": "Smowl",
-      "lName": "",
+      "email": "gjoshi.0522@gmail.com",
+      "password": "$2a$10$74vVjr3LSiY4JWitqfqh8O0JasTvncdFbuAc0sUZAuqrK8EY/ocGy",
+      "fName": "Gauri",
+      "lName": "Joshi",
       "cart": [],
       "wishlist": [],
       "orders": [],
@@ -111,7 +111,7 @@
   ],
   "orders": [
     {
-      "email": "hoo@gmail.com",
+      "email": "gjoshi.0522@gmail.com",
       "orders": [],
       "id": 1
     }

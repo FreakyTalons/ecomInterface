@@ -11,27 +11,6 @@ export default function Cart(){
 
     const [displaySuccessMsg, setDisplaySuccessMsg] = useState(false)
 
-    const handleDeleteItem = (id) => {
-       /*  const newCart = cart.filter(
-          (thing) => thing.id !== id
-        );
-        setCart(newCart); */
-        console.log("Delete Item")
-      }; 
-
-/*     const createCard = (item) =>
-    {
-        return(<div className='cartCard'>
-            <img src={item.image}/>
-            <div className='desc'>
-                <h3>{item.title}</h3>
-                <h3>₹{item.amount}</h3>
-            </div>
-            
-            <button onClick={handleDeleteItem(item.key)} className='bt'>REMOVE ITEM</button> 
-        </div>)
-    } */
-
     const handleBuyClick = () =>
     {
         setDisplaySuccessMsg(true)
@@ -39,7 +18,6 @@ export default function Cart(){
     }
 
     return(<div>
-   {/*  {cart.map(createCard)} */}
     {cartCount === 0?
             <div className='errDiv'>
                 <i class="customIcon--light fa-solid fa-face-sad-tear fa-3x"></i>

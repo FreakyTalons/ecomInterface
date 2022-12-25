@@ -17,12 +17,6 @@ function App() {
   //retrieve products list
 
   const handleClick = () => {
-    if (isLoggedIn) {
-      window.localStorage.removeItem("cart");
-      window.localStorage.removeItem("orders");
-      window.localStorage.removeItem("wishlist");
-      window.localStorage.removeItem("token");
-    }
     setLoggedIn(false);
     setCartCount(0);
   };
