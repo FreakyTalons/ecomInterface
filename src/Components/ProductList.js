@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from "react";
-import AppContext from "../AppContext";
+import React, { useEffect } from "react";
+import { fetchData } from "../store/productsListSlice";
+import { useSelector, useDispatch } from "react-redux";
+//import AppContext from "../AppContext";
 import ProductCard from "./ProductCard";
-import api from "../API/database";
+//import api from "../API/database";
 
 export default function ProductList() {
-  const { productList, setProductList } = useContext(AppContext);
+ /*  const { productList, setProductList } = useContext(AppContext);
 
   const retrieveProducts = async () => {
     const response = await api.get("/products");
@@ -24,6 +26,15 @@ export default function ProductList() {
     }
   }, [productList]);
 
+ */
+
+  const productList = useSelector((state) => state.productsList.value)
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData())
+  },[])
 
   return (
     <div className="catalogue">
